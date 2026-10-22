@@ -1,0 +1,46 @@
+---
+import Eyebrow from "../ui/Eyebrow.astro";
+import Icon from "../ui/Icon.astro";
+import Reveal from "../ui/Reveal.astro";
+import { HERO } from "../../lib/content";
+---
+
+<section class="hero">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="hero__grid-lines" aria-hidden="true"></div>
+    <div class="container-brand hero__inner">
+        <div class="hero__copy">
+            <Reveal><Eyebrow>{HERO.eyebrow}</Eyebrow></Reveal>
+            <Reveal delay={70}>
+                <h1 class="h1">
+                    {HERO.headlineTop}<br /><span class="accent"
+                        >{HERO.headlineAccent}</span>
+                </h1>
+            </Reveal>
+            <Reveal delay={140}
+                ><p class="lead hero__lead">{HERO.lead}</p></Reveal
+            >
+            <Reveal delay={210} class="hero__ctas">
+                <a href="/book" class="btn btn--primary btn--lg"
+                    >Book a discovery call <Icon
+                        name="arrow-right"
+                        size={16}
+                    /></a
+                >
+                <a href="/insights" class="btn btn--outline btn--lg"
+                    >Explore our insights</a
+                >
+            </Reveal>
+            <Reveal delay={280} class="hero__trust">
+                {
+                    HERO.trust.map((item) => (
+                        <div class="trust-item">
+                            <div class="trust-item__value">{item.value}</div>
+                            <div class="trust-item__label">{item.label}</div>
+                        </div>
+                    ))
+                }
+            </Reveal>
+        </div>
+    </div>
+</section>

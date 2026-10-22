@@ -1,0 +1,16 @@
+---
+import { LOGO_STRIP } from "../../lib/content";
+---
+
+<section class="logo-strip" aria-label="Selected clients">
+    <div class="container-brand">
+        <p class="logo-strip__label">{LOGO_STRIP.label}</p>
+        <div class="logo-strip__row">
+            {
+                LOGO_STRIP.clients.map((c) => (
+                    <span class="client-logo">{c}</span>
+                ))
+            }
+        </div>
+    </div>
+</section>

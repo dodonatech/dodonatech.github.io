@@ -1,0 +1,178 @@
+---
+import "../styles/globals.css";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import CookieBanner from "../components/layout/CookieBanner.astro";
+import SmoothScroll from "../components/layout/SmoothScroll.astro";
+import IconSprite from "../components/ui/IconSprite.astro";
+import { SITE_URL, COMPANY } from "../lib/content";
+
+interface Props {
+    title?: string;
+    description?: string;
+    canonical?: string;
+}
+
+const {
+    title = `${COMPANY.name} — ${COMPANY.tagline}`,
+    description = "Dodona LLC provides senior-only engineering consulting for ambitious software teams. VR/AR, modernization, AI readiness, cybersecurity, and more. Based in Dallas, TX.",
+    canonical = Astro.url.pathname,
+} = Astro.props;
+
+const fullTitle = title.includes(COMPANY.name)
+    ? title
+    : `${title} — ${COMPANY.name}`;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{fullTitle}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={new URL(canonical, SITE_URL).toString()} />
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={fullTitle} />
+        <meta property="og:description" content={description} />
+        <meta
+            property="og:url"
+            content={new URL(canonical, SITE_URL).toString()}
+        />
+        <meta property="og:site_name" content={COMPANY.name} />
+        <meta property="og:image" content={`${SITE_URL}/og-image.png`} />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={fullTitle} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={`${SITE_URL}/og-image.png`} />
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- JSON-LD Organization (Astro does not auto-generate this) -->
+        <script
+            type="application/ld+json"
+            set:html={JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: COMPANY.name,
+                url: SITE_URL,
+                email: COMPANY.contactEmail,
+            })}
+        />
+
+        <script>
+            // Reveal — IntersectionObserver, mirrors the old React component.
+            (() => {
+                const prefersReduced = window.matchMedia(
+                    "(prefers-reduced-motion: reduce)",
+                ).matches;
+                const els = document.querySelectorAll(".reveal");
+
+                if (prefersReduced || !("IntersectionObserver" in window)) {
+                    els.forEach((el) => el.classList.add("is-visible"));
+                    return;
+                }
+
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("is-visible");
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    { rootMargin: "0px 0px -80px 0px", threshold: 0.08 },
+                );
+
+                els.forEach((el) => observer.observe(el));
+            })();
+
+            document
+                .querySelectorAll("form[data-ajax-form]")
+                .forEach((form) => {
+                    form.addEventListener("submit", async (e) => {
+                        e.preventDefault();
+                        const btn =
+                            form.querySelector<HTMLButtonElement>(
+                                "[data-submit-btn]",
+                            );
+                        const success = form.querySelector<HTMLElement>(
+                            "[data-form-success]",
+                        );
+                        const msgEl = form.querySelector<HTMLElement>(
+                            "[data-form-message]",
+                        );
+                        if (!btn) return;
+
+                        const original = btn.innerHTML;
+                        btn.disabled = true;
+                        btn.textContent = "Sending...";
+                        if (msgEl) msgEl.hidden = true;
+
+                        try {
+                            const res = await fetch(form.action, {
+                                method: "POST",
+                                body: new FormData(form),
+                                headers: { Accept: "application/json" },
+                            });
+
+                            const data = await res.json().catch(() => null);
+                            if (!res.ok || (data && data.success === false))
+                                throw new Error(data?.message || "Send failed");
+
+                            if (success) {
+                                form.querySelectorAll<HTMLElement>(
+                                    ".form-grid, .field, .mt-6, .honeypot",
+                                ).forEach((el) => (el.hidden = true));
+                                form.querySelectorAll("h3, p").forEach(
+                                    (el) => (el.hidden = true),
+                                );
+                                success.hidden = false;
+                            } else if (msgEl) {
+                                msgEl.textContent =
+                                    form.dataset.successMessage ??
+                                    "Thanks — we got it.";
+                                msgEl.className =
+                                    "newsletter__msg newsletter__msg--ok";
+                                msgEl.hidden = false;
+                                form.reset();
+                            }
+                        } catch {
+                            if (msgEl) {
+                                msgEl.textContent =
+                                    "Something went wrong. Please try again or email us directly.";
+                                msgEl.className =
+                                    "newsletter__msg newsletter__msg--err";
+                                msgEl.hidden = false;
+                            }
+                            btn.disabled = false;
+                            btn.innerHTML = original;
+                            return;
+                        }
+
+                        btn.disabled = false;
+                        btn.innerHTML = original;
+                    });
+                });
+        </script>
+    </head>
+    <body>
+        <IconSprite />
+        <SmoothScroll />
+        <Header />
+        <main><slot /></main>
+        <Footer />
+        <CookieBanner />
+    </body>
+</html>

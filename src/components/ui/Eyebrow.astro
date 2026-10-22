@@ -1,0 +1,11 @@
+---
+interface Props {
+    plain?: boolean;
+    class?: string;
+}
+const { plain = false, class: className = "" } = Astro.props;
+---
+
+<span class:list={["eyebrow", plain && "eyebrow--plain", className]}>
+    <slot />
+</span>

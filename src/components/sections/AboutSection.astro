@@ -1,0 +1,30 @@
+---
+import Checklist from "../ui/Checklist.astro";
+import Eyebrow from "../ui/Eyebrow.astro";
+import Icon from "../ui/Icon.astro";
+import Reveal from "../ui/Reveal.astro";
+import { ABOUT } from "../../lib/content";
+---
+
+<section class="section-y section-alt">
+    <div class="container-brand">
+        <div class="split">
+            <Reveal>
+                <Eyebrow>{ABOUT.eyebrow}</Eyebrow>
+                <h2 class="h2 mt-3">{ABOUT.headline}</h2>
+                {ABOUT.paragraphs.map((p) => <p class="lead mt-4">{p}</p>)}
+                <div class="mt-8">
+                    <a href="/book" class="btn btn--primary"
+                        >Book a discovery call <Icon
+                            name="arrow-right"
+                            size={16}
+                        /></a
+                    >
+                </div>
+            </Reveal>
+            <Reveal>
+                <Checklist items={[...ABOUT.checklist]} />
+            </Reveal>
+        </div>
+    </div>
+</section>

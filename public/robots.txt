@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# AI crawlers — remove any of these if you'd rather not be included in training
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://dodonaai.github.io/sitemap-index.xml

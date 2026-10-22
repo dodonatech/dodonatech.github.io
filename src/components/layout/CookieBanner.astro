@@ -1,0 +1,60 @@
+---
+
+---
+
+<div
+    class="cookie-banner"
+    data-cookie-banner
+    hidden
+    role="dialog"
+    aria-live="polite"
+    aria-label="Cookie preferences"
+>
+    <p>
+        We use cookies to understand how the site is used so we can improve it.
+        See our <a href="/privacy">Privacy Policy</a>.
+    </p>
+    <div class="cookie-banner__actions">
+        <button class="btn btn--primary btn--sm" data-cookie-accept
+            >Accept</button
+        >
+        <button class="btn btn--outline btn--sm" data-cookie-decline
+            >Decline</button
+        >
+    </div>
+</div>
+
+<script>
+    (() => {
+        const KEY = "dodona-cookie-consent";
+        const banner = document.querySelector<HTMLElement>(
+            "[data-cookie-banner]",
+        );
+        if (!banner) return;
+
+        let stored: string | null = null;
+        try {
+            stored = localStorage.getItem(KEY);
+        } catch {}
+
+        if (stored) return;
+
+        window.setTimeout(() => {
+            banner.hidden = false;
+        }, 1200);
+
+        const dismiss = (value: string) => {
+            try {
+                localStorage.setItem(KEY, value);
+            } catch {}
+            banner.hidden = true;
+        };
+
+        banner
+            .querySelector("[data-cookie-accept]")
+            ?.addEventListener("click", () => dismiss("accepted"));
+        banner
+            .querySelector("[data-cookie-decline]")
+            ?.addEventListener("click", () => dismiss("declined"));
+    })();
+</script>

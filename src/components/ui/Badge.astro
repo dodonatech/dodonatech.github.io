@@ -1,0 +1,12 @@
+---
+type Tone = "gold" | "cyan" | "muted";
+interface Props {
+    tone?: Tone;
+    class?: string;
+}
+const { tone = "gold", class: className = "" } = Astro.props;
+const toneClass =
+    tone === "cyan" ? "badge--cyan" : tone === "muted" ? "badge--muted" : "";
+---
+
+<span class:list={["badge", toneClass, className]}><slot /></span>

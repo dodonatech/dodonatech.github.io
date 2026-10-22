@@ -1,0 +1,39 @@
+---
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
+---
+
+<div>
+    <form
+        class="newsletter__form"
+        action="https://api.web3forms.com/submit"
+        method="POST"
+        data-ajax-form
+        data-success-message="You're subscribed. Check your inbox for a confirmation."
+    >
+        <input type="hidden" name="access_key" value={accessKey} />
+        <input type="hidden" name="subject" value="New Newsletter Subscriber" />
+        <input type="hidden" name="from_name" value="Dodona Newsletter" />
+
+        <label class="sr-only" for="newsletter-email">Email address</label>
+        <input
+            id="newsletter-email"
+            type="email"
+            name="email"
+            required
+            placeholder="you@company.com"
+            autocomplete="email"
+        />
+        <button type="submit" class="btn btn--cyan" data-submit-btn
+            >Subscribe</button
+        >
+        <input
+            type="text"
+            name="_gotcha"
+            tabindex="-1"
+            autocomplete="off"
+            class="honeypot"
+            aria-hidden="true"
+        />
+    </form>
+    <p class="newsletter__msg" data-form-message hidden></p>
+</div>

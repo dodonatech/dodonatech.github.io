@@ -1,0 +1,37 @@
+---
+import Eyebrow from "../ui/Eyebrow.astro";
+import Icon from "../ui/Icon.astro";
+import Reveal from "../ui/Reveal.astro";
+import { CONTACT_EMAIL } from "../../lib/content";
+---
+
+<section class="cta-band section-y">
+    <div class="cta-band__glow" aria-hidden="true"></div>
+    <div class="container-brand">
+        <Reveal class="cta-band__inner">
+            <Eyebrow plain>Start here</Eyebrow>
+            <h2 class="h2 mt-3">Book a discovery call.</h2>
+            <p class="lead mt-4">
+                Thirty minutes with a senior engineer. We'll tell you whether we
+                can help, what a realistic first sprint looks like, and what it
+                would cost. No deck, no pressure.
+            </p>
+            <div class="cta-band__ctas">
+                <a href="/book" class="btn btn--primary btn--lg"
+                    >Book a discovery call <Icon
+                        name="arrow-right"
+                        size={16}
+                    /></a
+                >
+                <a href="/insights" class="btn btn--outline btn--lg"
+                    >Explore our insights</a
+                >
+            </div>
+            <p class="muted small mt-6">
+                Prefer email? <a
+                    class="text-gold"
+                    href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+            </p>
+        </Reveal>
+    </div>
+</section>

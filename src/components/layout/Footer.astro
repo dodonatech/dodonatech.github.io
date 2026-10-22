@@ -1,0 +1,68 @@
+---
+import Logo from "../ui/Logo.astro";
+import Icon from "../ui/Icon.astro";
+import {
+    COMPANY,
+    CONTACT_EMAIL,
+    FOOTER_COMPANY,
+    FOOTER_GET_STARTED,
+    FOOTER_SERVICES,
+} from "../../lib/content";
+
+const year = new Date().getFullYear();
+const columns = [
+    { title: "Services", links: FOOTER_SERVICES },
+    { title: "Company", links: FOOTER_COMPANY },
+    { title: "Get started", links: FOOTER_GET_STARTED },
+];
+---
+
+<footer class="site-footer">
+    <div class="container-brand">
+        <div class="footer__grid">
+            <div class="footer__about">
+                <Logo />
+                <p>
+                    Senior engineering talent for ambitious software teams.
+                    Based in {COMPANY.location} — serving the {COMPANY.region} and
+                    beyond.
+                </p>
+                <p class="mt-4">
+                    <a class="text-gold" href={`mailto:${CONTACT_EMAIL}`}
+                        >{CONTACT_EMAIL}</a>
+                </p>
+                <div class="mt-6">
+                    <a href="/book" class="btn btn--primary btn--sm">
+                        Book a discovery call <Icon
+                            name="arrow-right"
+                            size={14}
+                        />
+                    </a>
+                </div>
+            </div>
+
+            {
+                columns.map((col) => (
+                    <div class="footer__col">
+                        <h4>{col.title}</h4>
+                        <ul>
+                            {col.links.map((link) => (
+                                <li>
+                                    <a href={link.href}>{link.label}</a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="footer__bottom">
+            <span>© {year} {COMPANY.name}. All rights reserved.</span>
+            <span class="footer__legal">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+            </span>
+        </div>
+    </div>
+</footer>

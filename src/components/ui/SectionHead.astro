@@ -1,0 +1,23 @@
+---
+import Eyebrow from "./Eyebrow.astro";
+interface Props {
+    eyebrow?: string;
+    title: string;
+    lead?: string;
+    center?: boolean;
+    class?: string;
+}
+const {
+    eyebrow,
+    title,
+    lead,
+    center = false,
+    class: className = "",
+} = Astro.props;
+---
+
+<div class:list={["section-head", center && "section-head--center", className]}>
+    {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+    <h2 class="h2">{title}</h2>
+    {lead && <p class="lead">{lead}</p>}
+</div>

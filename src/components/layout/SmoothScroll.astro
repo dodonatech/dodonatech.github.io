@@ -1,0 +1,61 @@
+---
+// Smooth scroll for same-page hash links with sticky-header offset.
+// Cross-page hash navigation is handled natively via [id]{scroll-margin-top}.
+---
+
+<span data-smooth-scroll hidden aria-hidden="true"></span>
+
+<script>
+    (() => {
+        const prefersReduced = window.matchMedia(
+            "(prefers-reduced-motion: reduce)",
+        ).matches;
+
+        function scrollToHash(hash: string) {
+            const id = hash.replace(/^#/, "");
+            if (!id) return;
+
+            const el = document.getElementById(id);
+            if (!el) return;
+
+            const header = document.querySelector<HTMLElement>(".site-header");
+            const offset = (header?.getBoundingClientRect().height ?? 0) + 16;
+            const top =
+                el.getBoundingClientRect().top + window.scrollY - offset;
+
+            window.scrollTo({
+                top,
+                behavior: prefersReduced ? "auto" : "smooth",
+            });
+            history.replaceState(null, "", `#${id}`);
+        }
+
+        document.addEventListener("click", (e) => {
+            const anchor = (e.target as HTMLElement)?.closest(
+                "a",
+            ) as HTMLAnchorElement | null;
+            if (!anchor) return;
+
+            const href = anchor.getAttribute("href");
+            if (!href) return;
+
+            const hashIndex = href.indexOf("#");
+            if (hashIndex === -1) return;
+
+            const path = href.slice(0, hashIndex);
+            const hash = href.slice(hashIndex);
+
+            // Only intercept same-page hash links. Cross-page navigation
+            // is handled by Astro routing + scroll-margin-top on [id].
+            const isSamePage =
+                path === "" ||
+                path === window.location.pathname ||
+                (path === "/" && window.location.pathname === "/");
+
+            if (!isSamePage) return;
+
+            e.preventDefault();
+            scrollToHash(hash);
+        });
+    })();
+</script>

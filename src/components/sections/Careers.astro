@@ -1,0 +1,32 @@
+---
+import Badge from "../ui/Badge.astro";
+import Checklist from "../ui/Checklist.astro";
+import Eyebrow from "../ui/Eyebrow.astro";
+import Reveal from "../ui/Reveal.astro";
+import CareersInterestForm from "../forms/CareersInterestForm.astro";
+import { CAREERS } from "../../lib/content";
+---
+
+<section class="section-y" id="careers">
+    <div class="container-brand">
+        <div class="split">
+            <Reveal>
+                <Eyebrow>{CAREERS.eyebrow}</Eyebrow>
+                <h2 class="h2 mt-3">{CAREERS.headline}</h2>
+                <p class="lead mt-4">{CAREERS.lead}</p>
+                <div class="mt-6 flex flex-wrap items-center gap-2">
+                    {
+                        CAREERS.statusBadges.map((b) => (
+                            <Badge tone={b.tone}>{b.label}</Badge>
+                        ))
+                    }
+                </div>
+                <div class="mt-10">
+                    <h3 class="h4">What we hire for</h3>
+                    <Checklist items={[...CAREERS.disciplines]} class="mt-4" />
+                </div>
+            </Reveal>
+            <Reveal delay={100}><CareersInterestForm /></Reveal>
+        </div>
+    </div>
+</section>

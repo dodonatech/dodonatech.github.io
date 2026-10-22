@@ -1,16 +1,29 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/sections/Hero.astro";
+import LogoStrip from "../components/sections/LogoStrip.astro";
+import ServicesOverview from "../components/sections/ServicesOverview.astro";
+import WhyDodona from "../components/sections/WhyDodona.astro";
+import Testimonials from "../components/sections/Testimonials.astro";
+import Process from "../components/sections/Process.astro";
+import Insights from "../components/sections/Insights.astro";
+import AboutSection from "../components/sections/AboutSection.astro";
+import Careers from "../components/sections/Careers.astro";
+import CTABand from "../components/sections/CTABand.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+	title="Senior engineering talent for ambitious software teams"
+	description="Dodona LLC embeds senior engineers and architects into your organization to modernize critical systems, ship AI-ready data platforms, and turn stalled roadmaps into production software. Based in Dallas, TX."
+>
+	<Hero />
+	<LogoStrip />
+	<ServicesOverview />
+	<WhyDodona />
+	<Testimonials />
+	<Process />
+	<Insights />
+	<AboutSection />
+	<Careers />
+	<CTABand />
+</BaseLayout>

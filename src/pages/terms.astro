@@ -1,0 +1,80 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Eyebrow from "../components/ui/Eyebrow.astro";
+import { COMPANY, CONTACT_EMAIL } from "../lib/content";
+
+const updated = new Date().toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+});
+---
+
+<BaseLayout title="Terms of Service" description={`Terms of Service for ${COMPANY.name}.`}>
+    <section class="section-y">
+        <div class="container-brand">
+            <div class="mx-auto max-w-3xl">
+                <Eyebrow plain>Legal</Eyebrow>
+                <h1 class="h2 mt-3">Terms of Service</h1>
+                <p class="muted small mt-2">
+                    Last updated: {
+                        new Date().toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                        })
+                    }
+                </p>
+
+                <div class="prose mt-10">
+                    <p>
+                        These terms govern your use of the {COMPANY.name} website.
+                        By using the site, you agree to them.
+                    </p>
+
+                    <h2>Use of the site</h2>
+                    <p>
+                        You agree to use the site only for lawful purposes and
+                        in a way that does not infringe the rights of others or
+                        restrict their use of the site.
+                    </p>
+
+                    <h2>No professional advice</h2>
+                    <p>
+                        Content on this site is for informational purposes only
+                        and does not constitute engineering, legal, or financial
+                        advice. Any engagement is governed by a separate signed
+                        agreement.
+                    </p>
+
+                    <h2>Intellectual property</h2>
+                    <p>
+                        All content, branding, and code on this site are owned
+                        by{" "}
+                        {COMPANY.name} or its licensors and may not be reproduced
+                        without permission.
+                    </p>
+
+                    <h2>Limitation of liability</h2>
+                    <p>
+                        To the maximum extent permitted by law, {COMPANY.name} is
+                        not liable for indirect, incidental, or consequential damages
+                        arising from your use of the site.
+                    </p>
+
+                    <h2>Contact</h2>
+                    <p>
+                        Questions about these terms? Email{" "}
+                        <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+                    </p>
+
+                    <hr />
+                    <p class="muted small">
+                        This is a placeholder set of terms. Replace it with
+                        counsel-reviewed language before launch.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

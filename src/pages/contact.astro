@@ -1,0 +1,120 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHead from "../components/ui/SectionHead.astro";
+import Icon from "../components/ui/Icon.astro";
+import Reveal from "../components/ui/Reveal.astro";
+import ContactForm from "../components/forms/ContactForm.astro";
+import NewsletterForm from "../components/forms/NewsletterForm.astro";
+import { COMPANY, CONTACT_EMAIL } from "../lib/content";
+---
+
+<BaseLayout
+    title="Contact"
+    description="Tell us what you’re working on. Dodona LLC responds within one business day."
+>
+    <section class="section-y">
+        <div class="container-brand">
+            <Reveal>
+                <SectionHead
+                    eyebrow="Contact"
+                    title="Tell us what you’re working on."
+                    lead="Fill in the form and we’ll respond within one business day. If you’d rather just pick a time, book a discovery call directly."
+                />
+            </Reveal>
+            <div class="split split--sidebar">
+                <Reveal><ContactForm /></Reveal>
+                <aside class="space-y-6">
+                    <Reveal>
+                        <div class="card">
+                            <h3 class="h4">Direct contact</h3>
+                            <div class="mt-4">
+                                <div class="contact-detail">
+                                    <div class="contact-detail__icon">
+                                        <Icon name="mail" size={18} />
+                                    </div>
+                                    <div>
+                                        <div class="contact-detail__label">
+                                            Email
+                                        </div><div
+                                            class="contact-detail__value"
+                                        >
+                                            <a href={`mailto:${CONTACT_EMAIL}`}
+                                                >{CONTACT_EMAIL}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="contact-detail">
+                                    <div class="contact-detail__icon">
+                                        <Icon name="pin" size={18} />
+                                    </div>
+                                    <div>
+                                        <div class="contact-detail__label">
+                                            Location
+                                        </div><div
+                                            class="contact-detail__value"
+                                        >
+                                            {COMPANY.location} — serving the {
+                                                COMPANY.region
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="contact-detail">
+                                    <div class="contact-detail__icon">
+                                        <Icon name="clock" size={18} />
+                                    </div>
+                                    <div>
+                                        <div class="contact-detail__label">
+                                            Response time
+                                        </div><div
+                                            class="contact-detail__value"
+                                        >
+                                            Within one business day
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Reveal>
+                    <Reveal>
+                        <div class="card">
+                            <div class="flex items-start gap-3">
+                                <div class="card__icon shrink-0">
+                                    <Icon name="calendar" size={22} />
+                                </div>
+                                <div>
+                                    <h3 class="h4">Or book directly</h3>
+                                    <p class="muted small mt-2">
+                                        Pick a 30-minute slot on the calendar.
+                                    </p>
+                                    <a
+                                        href="/book"
+                                        class="btn btn--outline btn--sm mt-4"
+                                        >Open booking page <Icon
+                                            name="arrow-right"
+                                            size={14}
+                                        /></a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </Reveal>
+                    <Reveal>
+                        <div class="newsletter">
+                            <h3>Field notes, monthly.</h3>
+                            <p>
+                                Practical writing on modernization, AI
+                                readiness, and shipping technical programs. No
+                                fluff, unsubscribe anytime.
+                            </p>
+                            <NewsletterForm />
+                            <p class="newsletter__note">
+                                We send roughly once a month. No spam, ever.
+                            </p>
+                        </div>
+                    </Reveal>
+                </aside>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

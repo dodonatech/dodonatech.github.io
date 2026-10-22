@@ -1,0 +1,54 @@
+---
+import Icon from "../ui/Icon.astro";
+import Reveal from "../ui/Reveal.astro";
+import SectionHead from "../ui/SectionHead.astro";
+import { SERVICES } from "../../lib/content";
+
+const featuredSlugs = [
+    "ai-readiness",
+    "modernization",
+    "process-automation",
+    "vr-ar",
+];
+const featured = featuredSlugs
+    .map((s) => SERVICES.find((x) => x.slug === s)!)
+    .filter(Boolean);
+---
+
+<section class="section-y">
+    <div class="container-brand">
+        <Reveal>
+            <SectionHead
+                eyebrow="What we do"
+                title="Ten practices. One senior team."
+                lead="We cover the full arc of a technology decision — from strategy and assessment through implementation and handoff. Every engagement is scoped, priced, and staffed with senior practitioners."
+            />
+        </Reveal>
+        <div class="grid grid--2">
+            {
+                featured.map((service, i) => (
+                    <Reveal delay={Math.min(i, 3) * 70}>
+                        <article class="card">
+                            <div class="card__icon">
+                                <Icon name={service.icon} size={22} />
+                            </div>
+                            <h3 class="h4">{service.title}</h3>
+                            <p>{service.blurb}</p>
+                            <a
+                                href={`/services/${service.slug}`}
+                                class="card__link"
+                            >
+                                Explore <Icon name="arrow-right" size={16} />
+                            </a>
+                        </article>
+                    </Reveal>
+                ))
+            }
+        </div>
+        <Reveal delay={100} class="mt-10">
+            <a href="/services" class="btn btn--outline"
+                >See all ten practices <Icon name="arrow-right" size={16} /></a
+            >
+        </Reveal>
+    </div>
+</section>

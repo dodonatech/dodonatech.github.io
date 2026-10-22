@@ -1,0 +1,35 @@
+---
+import Reveal from "../ui/Reveal.astro";
+import SectionHead from "../ui/SectionHead.astro";
+import { TESTIMONIALS } from "../../lib/content";
+---
+
+<section class="section-y section-light" id="testimonials">
+    <div class="container-brand">
+        <Reveal>
+            <SectionHead
+                eyebrow="Client feedback"
+                title="What engineering leaders say."
+                center
+            />
+        </Reveal>
+        <div class="grid grid--3">
+            {
+                TESTIMONIALS.map((t, i) => (
+                    <Reveal delay={Math.min(i, 3) * 70}>
+                        <figure class="quote">
+                            <div class="quote__mark" aria-hidden="true">
+                                “
+                            </div>
+                            <blockquote>{t.quote}</blockquote>
+                            <figcaption class="quote__author">
+                                <div class="quote__name">{t.name}</div>
+                                <div class="quote__role">{t.role}</div>
+                            </figcaption>
+                        </figure>
+                    </Reveal>
+                ))
+            }
+        </div>
+    </div>
+</section>

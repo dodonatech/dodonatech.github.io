@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/ui/PageHero.astro";
+import Icon from "../../components/ui/Icon.astro";
+import Reveal from "../../components/ui/Reveal.astro";
+import CTABand from "../../components/sections/CTABand.astro";
+import { INSIGHTS } from "../../lib/content";
+---
+
+<BaseLayout
+    title="Insights"
+    description="Selected engagements across manufacturing, energy, and public sector."
+>
+    <PageHero
+        eyebrow="Insights"
+        title="Field notes from real engagements."
+        lead="Selected engagements across manufacturing, energy, and public sector — what we built, what changed, and what we learned. Full references are available under NDA."
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Insights" }]}
+    />
+    <section class="section-y section-light">
+        <div class="container-brand">
+            <div class="grid grid--3">
+                {
+                    INSIGHTS.map((insight, i) => (
+                        <Reveal delay={Math.min(i, 3) * 70}>
+                            <article class="post-card">
+                                <div class="post-card__meta">
+                                    <>
+                                        <span>{insight.industry}</span>
+                                        <span aria-hidden="true">·</span>
+                                        <span>{insight.year}</span>
+                                    </>
+                                </div>
+                                <h3>{insight.title}</h3>
+                                <p>{insight.excerpt}</p>
+                                <a href="/book" class="post-card__link">
+                                    Let’s talk{" "}
+                                    <Icon name="arrow-right" size={16} />
+                                </a>
+                            </article>
+                        </Reveal>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+    <CTABand />
+</BaseLayout>

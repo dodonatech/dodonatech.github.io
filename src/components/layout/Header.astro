@@ -1,0 +1,315 @@
+---
+import Logo from "../ui/Logo.astro";
+import Icon from "../ui/Icon.astro";
+import { PRIMARY_NAV, SERVICES } from "../../lib/content";
+
+const pathname = Astro.url.pathname;
+const isActive = (href: string) => {
+    if (href === "/services") return pathname.startsWith("/services");
+    if (href === "/insights") return pathname.startsWith("/insights");
+    if (href === "/about") return pathname === "/about";
+    return false;
+};
+---
+
+<header
+    class="site-header border-cream/[0.08] bg-navy/[0.78] sticky top-0 z-[100] border-b backdrop-blur-[16px]"
+>
+    <div class="container-brand site-header__inner">
+        <Logo />
+
+        <!-- Desktop nav -->
+        <nav class="nav hidden lg:flex" aria-label="Primary">
+            <div class="nav-services" data-nav-services>
+                <button
+                    class="nav__link nav-services__toggle"
+                    aria-expanded="false"
+                    aria-controls="services-panel"
+                    data-nav-toggle
+                >
+                    Services
+                    <Icon name="arrow-right" size={12} class="rotate-90" />
+                </button>
+
+                <div
+                    class="nav-services__panel"
+                    id="services-panel"
+                    data-nav-panel
+                    hidden
+                >
+                    <div class="nav-services__grid">
+                        <ul class="nav-services__categories">
+                            {
+                                SERVICES.map((s) => (
+                                    <li>
+                                        <a
+                                            href={`/services/${s.slug}`}
+                                            class="nav-services__link"
+                                            data-category={s.slug}
+                                        >
+                                            <Icon name={s.icon} size={16} />
+                                            <span>{s.shortTitle}</span>
+                                        </a>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+
+                        <div class="nav-services__content">
+                            {
+                                SERVICES.map((s, i) => (
+                                    <div
+                                        class:list={[
+                                            "nav-services__sub-panel",
+                                            i !== 0 && "hidden",
+                                        ]}
+                                        data-panel={s.slug}
+                                    >
+                                        <h4>{s.title}</h4>
+                                        <p class="nav-services__blurb">
+                                            {s.blurb}
+                                        </p>
+                                        <ul>
+                                            {s.subServices.map((sub) => (
+                                                <li>
+                                                    <a
+                                                        href={`/services/${s.slug}#${sub.anchor}`}
+                                                    >
+                                                        <strong>
+                                                            {sub.label}
+                                                        </strong>
+                                                        <span>
+                                                            {sub.description}
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <a
+                                            href="/services"
+                                            class="nav-services__all"
+                                        >
+                                            See all services{" "}
+                                            <Icon
+                                                name="arrow-right"
+                                                size={14}
+                                            />
+                                        </a>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {
+                PRIMARY_NAV.slice(1).map((item) => (
+                    <a
+                        href={item.href}
+                        class:list={[
+                            "nav__link",
+                            isActive(item.href) && "nav__link--active",
+                        ]}
+                        aria-current={isActive(item.href) ? "page" : undefined}
+                    >
+                        {item.label}
+                    </a>
+                ))
+            }
+        </nav>
+
+        <div class="header-actions">
+            <a href="/contact" class="btn btn--ghost">Contact</a>
+            <a href="/book" class="btn btn--primary">Book a discovery call</a>
+        </div>
+
+        <button
+            class="menu-toggle lg:hidden"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            aria-label="Open menu"
+            data-mobile-toggle
+        >
+            <span data-menu-icon="menu"><Icon name="menu" size={20} /></span>
+            <span data-menu-icon="close" hidden
+                ><Icon name="close" size={20} /></span
+            >
+        </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu" data-mobile-menu hidden>
+        <div class="container-brand">
+            <details class="mobile-services">
+                <summary class="mobile-menu__link">
+                    Services
+                    <Icon
+                        name="arrow-right"
+                        size={16}
+                        class="mobile-services__arrow"
+                    />
+                </summary>
+
+                {
+                    SERVICES.map((s) => (
+                        <details class="mobile-category">
+                            <summary>
+                                <Icon name={s.icon} size={14} />
+                                <span>{s.shortTitle}</span>
+                                <Icon
+                                    name="arrow-right"
+                                    size={12}
+                                    class="mobile-services__arrow"
+                                />
+                            </summary>
+                            <ul class="mobile-category__list">
+                                <li>
+                                    <a href={`/services/${s.slug}`}>
+                                        Overview →
+                                    </a>
+                                </li>
+                                {s.subServices.map((sub) => (
+                                    <li>
+                                        <a
+                                            href={`/services/${s.slug}#${sub.anchor}`}
+                                        >
+                                            {sub.label}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </details>
+                    ))
+                }
+
+                <a href="/services" class="mobile-services__all"
+                    >See all services →</a
+                >
+            </details>
+
+            {
+                PRIMARY_NAV.slice(1).map((item) => (
+                    <a href={item.href} class="mobile-menu__link">
+                        {item.label}
+                    </a>
+                ))
+            }
+            <a href="/#careers" class="mobile-menu__link">Careers</a>
+            <a href="/contact" class="mobile-menu__link">Contact</a>
+
+            <div class="mobile-menu__cta">
+                <a href="/book" class="btn btn--primary w-full"
+                    >Book a discovery call</a
+                >
+                <a href="/insights" class="btn btn--outline w-full"
+                    >Explore our insights</a
+                >
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    // Desktop dropdown behavior.
+    document.querySelectorAll("[data-nav-services]").forEach((nav) => {
+        const toggle =
+            nav.querySelector<HTMLButtonElement>("[data-nav-toggle]");
+        const panel = nav.querySelector<HTMLElement>("[data-nav-panel]");
+        const categories = nav.querySelectorAll<HTMLElement>("[data-category]");
+        const panels = nav.querySelectorAll<HTMLElement>("[data-panel]");
+        if (!toggle || !panel) return;
+
+        let closeTimer: number | undefined;
+
+        const open = () => {
+            panel.hidden = false;
+            toggle.setAttribute("aria-expanded", "true");
+        };
+        const close = () => {
+            panel.hidden = true;
+            toggle.setAttribute("aria-expanded", "false");
+        };
+        const showPanel = (slug: string) => {
+            panels.forEach((p) => {
+                p.classList.toggle("hidden", p.dataset.panel !== slug);
+            });
+            categories.forEach((c) => {
+                c.classList.toggle("is-active", c.dataset.category === slug);
+            });
+        };
+
+        toggle.addEventListener("click", () =>
+            panel.hidden ? open() : close(),
+        );
+
+        nav.addEventListener("mouseenter", () => {
+            window.clearTimeout(closeTimer);
+            open();
+        });
+        nav.addEventListener("mouseleave", () => {
+            closeTimer = window.setTimeout(close, 150);
+        });
+
+        categories.forEach((cat) => {
+            const slug = cat.dataset.category;
+            if (!slug) return;
+            cat.addEventListener("mouseenter", () => showPanel(slug));
+            cat.addEventListener("focus", () => showPanel(slug));
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && !panel.hidden) {
+                close();
+                toggle.focus();
+            }
+        });
+    });
+
+    // Mobile menu toggle.
+    const mobileToggle = document.querySelector<HTMLButtonElement>(
+        "[data-mobile-toggle]",
+    );
+    const mobileMenu =
+        document.querySelector<HTMLElement>("[data-mobile-menu]");
+
+    if (mobileToggle && mobileMenu) {
+        const iconMenu = mobileToggle.querySelector<HTMLElement>(
+            '[data-menu-icon="menu"]',
+        );
+        const iconClose = mobileToggle.querySelector<HTMLElement>(
+            '[data-menu-icon="close"]',
+        );
+
+        mobileToggle.addEventListener("click", () => {
+            const isOpen = mobileMenu.hidden;
+            mobileMenu.hidden = !isOpen;
+            mobileToggle.setAttribute("aria-expanded", String(isOpen));
+            mobileToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close menu" : "Open menu",
+            );
+            if (iconMenu) iconMenu.hidden = isOpen;
+            if (iconClose) iconClose.hidden = !isOpen;
+        });
+
+        // Close on link click.
+        mobileMenu.addEventListener("click", (e) => {
+            if ((e.target as HTMLElement).closest("a")) {
+                mobileMenu.hidden = true;
+                mobileToggle.setAttribute("aria-expanded", "false");
+                mobileToggle.setAttribute("aria-label", "Open menu");
+                if (iconMenu) iconMenu.hidden = false;
+                if (iconClose) iconClose.hidden = true;
+            }
+        });
+
+        // Close on resize to desktop.
+        window.addEventListener("resize", () => {
+            if (window.innerWidth >= 1024 && !mobileMenu.hidden) {
+                mobileMenu.hidden = true;
+                mobileToggle.setAttribute("aria-expanded", "false");
+            }
+        });
+    }
+</script>

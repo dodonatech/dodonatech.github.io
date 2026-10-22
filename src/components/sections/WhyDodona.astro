@@ -1,0 +1,46 @@
+---
+import Eyebrow from "../ui/Eyebrow.astro";
+import Reveal from "../ui/Reveal.astro";
+import { WHY_FEATURES, WHY_STATS } from "../../lib/content";
+---
+
+<section class="section-y section-alt" id="why">
+    <div class="container-brand">
+        <div class="split">
+            <Reveal>
+                <Eyebrow>Why Dodona</Eyebrow>
+                <h2 class="h2 mt-3">The difference is who shows up.</h2>
+                <p class="lead mt-4">
+                    Most consulting firms sell you a team you never meet. We
+                    sell you the two or three people who will actually write the
+                    code — and we put their names in the contract.
+                </p>
+                <div class="stat-row mt-8">
+                    {
+                        WHY_STATS.map((stat) => (
+                            <div class="stat">
+                                <div class="stat__value">{stat.value}</div>
+                                <div class="stat__label">{stat.label}</div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </Reveal>
+            <Reveal class="flex flex-col gap-7">
+                {
+                    WHY_FEATURES.map((f) => (
+                        <div class="feature">
+                            <span class="feature__num">{f.num}</span>
+                            <div>
+                                <>
+                                    <h3>{f.title}</h3>
+                                    <p>{f.body}</p>
+                                </>
+                            </div>
+                        </div>
+                    ))
+                }
+            </Reveal>
+        </div>
+    </div>
+</section>

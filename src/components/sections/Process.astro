@@ -1,0 +1,28 @@
+---
+import Reveal from "../ui/Reveal.astro";
+import SectionHead from "../ui/SectionHead.astro";
+import { PROCESS_STEPS } from "../../lib/content";
+---
+
+<section class="section-y" id="process">
+    <div class="container-brand">
+        <Reveal>
+            <SectionHead
+                eyebrow="How we work"
+                title="A predictable path from question to shipped."
+                lead="Four phases. Fixed scope at every gate. You can stop after any phase and keep everything we produced."
+            />
+        </Reveal>
+        <div class="process">
+            {
+                PROCESS_STEPS.map((step, i) => (
+                    <Reveal delay={Math.min(i, 3) * 70} class="process__step">
+                        <div class="process__num">{step.num}</div>
+                        <h3>{step.title}</h3>
+                        <p>{step.body}</p>
+                    </Reveal>
+                ))
+            }
+        </div>
+    </div>
+</section>

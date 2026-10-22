@@ -1,0 +1,115 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/ui/PageHero.astro";
+import Checklist from "../components/ui/Checklist.astro";
+import Icon from "../components/ui/Icon.astro";
+import Reveal from "../components/ui/Reveal.astro";
+import SectionHead from "../components/ui/SectionHead.astro";
+import CTABand from "../components/sections/CTABand.astro";
+import { ABOUT, WHY_FEATURES, WHY_STATS, PROCESS_STEPS } from "../lib/content";
+---
+
+<BaseLayout
+    title="About"
+    description="Dodona LLC is a Dallas-based software consulting firm built on a simple constraint — only senior engineers, and only work we’d put our names on."
+>
+    <PageHero
+        eyebrow={ABOUT.eyebrow}
+        title={ABOUT.headline}
+        lead="A Dallas-based engineering firm named for an oracle, staffed entirely by senior practitioners."
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
+    />
+
+    <section class="section-y">
+        <div class="container-brand">
+            <div class="split">
+                <Reveal>
+                    <h2 class="h2">Why we exist.</h2>
+                    {ABOUT.paragraphs.map((p) => <p class="lead mt-4">{p}</p>)}
+                    <div class="mt-8">
+                        <a href="/book" class="btn btn--primary"
+                            >Book a discovery call <Icon
+                                name="arrow-right"
+                                size={16}
+                            /></a>
+                    </div>
+                </Reveal>
+                <Reveal>
+                    <h3 class="h4">What we promise</h3>
+                    <Checklist items={[...ABOUT.checklist]} class="mt-4" />
+                </Reveal>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-y section-alt">
+        <div class="container-brand">
+            <div class="split">
+                <Reveal>
+                    <SectionHead
+                        eyebrow="Why Dodona"
+                        title="The difference is who shows up."
+                        lead="Most consulting firms sell you a team you never meet. We sell you the two or three people who will actually write the code — and we put their names in the contract."
+                    />
+                    <div class="stat-row">
+                        {
+                            WHY_STATS.map((s) => (
+                                <div class="stat">
+                                    <>
+                                        <div class="stat__value">{s.value}</div>
+                                        <div class="stat__label">{s.label}</div>
+                                    </>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </Reveal>
+                <Reveal class="flex flex-col gap-7">
+                    {
+                        WHY_FEATURES.map((f) => (
+                            <div class="feature">
+                                <>
+                                    <span class="feature__num">{f.num}</span>
+                                    <div>
+                                        <>
+                                            <h3>{f.title}</h3>
+                                            <p>{f.body}</p>
+                                        </>
+                                    </div>
+                                </>
+                            </div>
+                        ))
+                    }
+                </Reveal>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-y" id="process">
+        <div class="container-brand">
+            <Reveal>
+                <SectionHead
+                    eyebrow="How we work"
+                    title="A predictable path from question to shipped."
+                    lead="Four phases. Fixed scope at every gate. You can stop after any phase and keep everything we produced."
+                />
+            </Reveal>
+            <div class="process">
+                {
+                    PROCESS_STEPS.map((step, i) => (
+                        <Reveal
+                            delay={Math.min(i, 3) * 70}
+                            class="process__step"
+                        >
+                            <div class="process__num">{step.num}</div>
+                            <h3>{step.title}</h3>
+                            <p>{step.body}</p>
+                        </Reveal>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <CTABand />
+</BaseLayout>

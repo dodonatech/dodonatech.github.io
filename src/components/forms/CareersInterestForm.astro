@@ -1,0 +1,124 @@
+---
+import Icon from "../ui/Icon.astro";
+import { CAREERS, CONTACT_EMAIL } from "../../lib/content";
+
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
+---
+
+<form
+    class="card"
+    action="https://api.web3forms.com/submit"
+    method="POST"
+    data-ajax-form
+>
+    <input type="hidden" name="access_key" value={accessKey} />
+    <input
+        type="hidden"
+        name="subject"
+        value="Careers Introduction from Dodona Site"
+    />
+    <input type="hidden" name="from_name" value="Dodona Careers" />
+
+    <h3 class="h4">Introduce yourself</h3>
+    <p class="muted small mt-2">
+        A few sentences is plenty. We read every message personally.
+    </p>
+
+    <div class="form-grid form-grid--2 mt-6">
+        <div class="field">
+            <label for="careers-name"
+                >Name <span class="req" aria-hidden="true">*</span></label
+            >
+            <input
+                id="careers-name"
+                name="name"
+                type="text"
+                autocomplete="name"
+                required
+            />
+        </div>
+        <div class="field">
+            <label for="careers-email"
+                >Email <span class="req" aria-hidden="true">*</span></label
+            >
+            <input
+                id="careers-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+            />
+        </div>
+        <div class="field">
+            <label for="careers-discipline">Discipline</label>
+            <select id="careers-discipline" name="discipline">
+                <option value="">Select one…</option>
+                {CAREERS.disciplineOptions.map((opt) => <option>{opt}</option>)}
+            </select>
+        </div>
+        <div class="field">
+            <label for="careers-experience">Years of experience</label>
+            <select id="careers-experience" name="experience">
+                <option value="">Select one…</option>
+                {CAREERS.experienceOptions.map((opt) => <option>{opt}</option>)}
+            </select>
+        </div>
+    </div>
+
+    <div class="field mt-6">
+        <label for="careers-link">LinkedIn or portfolio</label>
+        <input
+            id="careers-link"
+            name="link"
+            type="url"
+            placeholder="https://linkedin.com/in/janedoe"
+        />
+    </div>
+
+    <div class="field mt-6">
+        <label for="careers-message"
+            >A short introduction <span class="req" aria-hidden="true">*</span
+            ></label
+        >
+        <textarea
+            id="careers-message"
+            name="message"
+            required
+            placeholder="What kind of systems have you built? What kind of work do you want to be doing next? A couple of sentences is plenty."
+        ></textarea>
+    </div>
+
+    <div class="honeypot" aria-hidden="true">
+        <label for="careers-website">Website</label>
+        <input
+            id="careers-website"
+            name="_gotcha"
+            type="text"
+            tabindex="-1"
+            autocomplete="off"
+        />
+    </div>
+
+    <div class="mt-6">
+        <button
+            type="submit"
+            class="btn btn--primary btn--lg w-full"
+            data-submit-btn
+        >
+            Send introduction <Icon name="arrow-right" size={16} />
+        </button>
+        <p class="tiny muted mt-3">
+            We keep introductions on file and reach out first when a role opens.
+        </p>
+    </div>
+
+    <div class="form-success" data-form-success hidden>
+        <div class="form-success__icon"><Icon name="check" size={28} /></div>
+        <h3 class="h3">Thanks — we've got it.</h3>
+        <p class="muted mt-3">
+            Your introduction landed. We read every message personally. When a
+            role opens that fits, you'll hear from us before we post it
+            publicly.
+        </p>
+    </div>
+</form>

@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Eyebrow from "../components/ui/Eyebrow.astro";
+import Reveal from "../components/ui/Reveal.astro";
+import { CALENDLY_URL, CONTACT_EMAIL } from "../lib/content";
+---
+
+<BaseLayout
+    title="Book a discovery call"
+    description="Thirty minutes with a senior engineer."
+>
+    <section class="section-y">
+        <div class="container-brand">
+            <div class="mx-auto max-w-4xl">
+                <Reveal>
+                    <Eyebrow plain>Start here</Eyebrow>
+                    <h1 class="h2 mt-3">Book a discovery call.</h1>
+                    <p class="lead mt-4">
+                        Thirty minutes with a senior engineer. We’ll tell you
+                        whether we can help, what a realistic first sprint looks
+                        like, and what it would cost. No deck, no pressure.
+                    </p>
+                </Reveal>
+                <Reveal delay={100} class="mt-10">
+                    <div class="booking-embed">
+                        <iframe
+                            src={CALENDLY_URL}
+                            title="Book a discovery call with Dodona"
+                            loading="lazy"
+                            style="width:100%;height:44rem;border:0;display:block;"
+                        ></iframe>
+                    </div>
+                </Reveal>
+                <Reveal delay={160} class="mt-8">
+                    <p class="muted small">
+                        Calendar not loading? Email <a
+                            class="text-gold"
+                            href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a
+                        > and we’ll find a time.
+                    </p>
+                </Reveal>
+            </div>
+        </div>
+    </section>
+</BaseLayout>
