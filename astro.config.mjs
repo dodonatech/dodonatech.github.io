@@ -4,7 +4,7 @@ import tailwind from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://dodonaai.github.io",
+  site: "https://dodonatech.github.io",
   // base: "/dodona-site",
   output: "static",
   integrations: [sitemap()],

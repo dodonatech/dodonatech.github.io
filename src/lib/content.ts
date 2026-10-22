@@ -12,10 +12,10 @@ export const CONTACT_EMAIL = COMPANY.contactEmail;
 export const COOKIE_CONSENT_KEY = "dodona-cookie-consent";
 
 export const CALENDLY_URL =
-    process.env.PUBLIC_CALENDLY_URL ?? "https://calendly.com/dodonaai/discovery-call";
+    process.env.PUBLIC_CALENDLY_URL ?? "https://calendly.com/dodonatech/discovery-call";
 
 export const SITE_URL =
-    process.env.PUBLIC_SITE_URL ?? "https://dodonaai.github.io";
+    process.env.PUBLIC_SITE_URL ?? "https://dodonatech.github.io";
 
 /* ------------------------------------------------------------------ */
 /* Navigation                                                          */

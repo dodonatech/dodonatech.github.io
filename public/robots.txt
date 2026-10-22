@@ -11,4 +11,4 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: https://dodonaai.github.io/sitemap-index.xml
+Sitemap: https://dodonatech.github.io/sitemap-index.xml
