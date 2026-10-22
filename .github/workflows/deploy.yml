@@ -15,6 +15,10 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: withastro/action@v6
+        env:
+          PUBLIC_SITE_URL: ${{ secrets.PUBLIC_SITE_URL }}
+          PUBLIC_CALENDLY_URL: ${{ secrets.PUBLIC_CALENDLY_URL }}
+          PUBLIC_WEB3FORMS_KEY: ${{ secrets.PUBLIC_WEB3FORMS_KEY }}
 
   deploy:
     needs: build
