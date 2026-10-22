@@ -2,7 +2,7 @@ export const COMPANY = {
     name: "Dodona LLC",
     shortName: "Dodona",
     tagline: "Senior engineering talent for ambitious software teams.",
-    contactEmail: "dodona.solutions@proton.me",
+    contactEmail: "dodonatech@proton.me",
     location: "Dallas, TX",
     region: "DFW metroplex",
 } as const;
