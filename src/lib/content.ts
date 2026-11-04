@@ -556,10 +556,10 @@ export const SERVICES: Service[] = [
         blurb:
             "Project management, onsite and remote staffing, and technical white papers.",
         tagline:
-            "Sometimes you need people; sometimes you need a document. We provide both — senior-level, and only when we can staff it with people who'd pass your own interview.",
+            "Sometimes you need people; sometimes you need a document. We provide both a team and a plan, only when we can staff it with people who'd pass your own interview.",
         whatWeDo: [
             "Technical project management",
-            "Onsite and remote senior staffing",
+            "Onsite and remote staffing",
             "Technical white papers and writing",
             "Program rescue for stalled engagements",
             "Delivery leadership for complex programs",
@@ -634,7 +634,7 @@ export const LOGO_STRIP = {
 } as const;
 
 export const WHY_STATS = [
-    { value: "100%", label: "Senior practitioners" },
+    { value: "100%", label: "Adaptable expertise" },
     { value: "2 wks", label: "Discovery to plan" },
     { value: "Fixed", label: "Scope & price" },
     { value: "DFW", label: "Onsite when needed" },
@@ -828,7 +828,7 @@ export const CAREERS = {
         { label: "Always accepting introductions", tone: "cyan" as const },
     ],
     disciplines: [
-        "Senior Software Engineering (TypeScript, Go, Java, Python)",
+        "Software Engineering (TypeScript, Go, Java, Python)",
         "Solutions Architecture (AI/Data, Cloud, Enterprise)",
         "Technical Program Management",
         "Site Reliability & DevOps",
