@@ -1,7 +1,7 @@
 export const COMPANY = {
     name: "Dodona LLC",
     shortName: "Dodona",
-    tagline: "From complex systems to technical solutions.",
+    tagline: "From complex systems to seamless solutions.",
     contactEmail: "dodonatech@proton.me",
     location: "Dallas, TX",
     region: "DFW metroplex",
@@ -445,113 +445,9 @@ export const SERVICES: Service[] = [
             "A two-to-four week assessment produces a costed roadmap, business case, and risk register.",
     },
     {
-        slug: "telecom",
-        title: "Telecom Audits & Call Center Design",
-        shortTitle: "Telecom",
-        icon: "phone",
-        blurb:
-            "Telecom billing audits and cost reviews, plus call center planning and operational design.",
-        tagline:
-            "Telecom overcharges are rarely a billing error — they're a contract drift problem. We find them and fix the process that lets them recur.",
-        whatWeDo: [
-            "Telecom billing audits and cost reviews",
-            "Circuit inventory reconciliation",
-            "Contract term analysis and renegotiation support",
-            "Call center planning and operational design",
-            "Contact center technology selection",
-        ],
-        subServices: [
-            {
-                label: "Billing Audits",
-                anchor: "billing",
-                description: "Circuit drift, expired terms, unmetered usage.",
-            },
-            {
-                label: "Cost Reviews",
-                anchor: "cost",
-                description: "The numbers behind the invoice.",
-            },
-            {
-                label: "Call Center Design",
-                anchor: "call-center",
-                description: "Contact center tech and operations design.",
-            },
-        ],
-        deliverables: [
-            "Audit findings with recoverable dollars",
-            "Corrected inventory",
-            "Contract review",
-            "Call center design (if in scope)",
-        ],
-        faq: [
-            {
-                q: "How much do your audits typically recover?",
-                a: "It depends on scale and history, but most organizations find meaningful recoverable spend in the first pass.",
-            },
-            {
-                q: "Do you take a percentage?",
-                a: "Fixed-scope engagement. You keep 100% of recoveries.",
-            },
-        ],
-        engagement:
-            "A two-to-three week audit produces findings, corrected inventory, and a contract review.",
-    },
-    {
-        slug: "scada",
-        title: "SCADA, Community Development & Grants",
-        shortTitle: "SCADA & Grants",
-        icon: "radio",
-        blurb:
-            "SCADA systems, community development technology, and federal grants management.",
-        tagline:
-            "Industrial control systems and public-sector grant programs have the same failure mode: fragile systems, no observability, and no plan for the day they fail. We build for that day.",
-        whatWeDo: [
-            "SCADA system design, migration, and modernization",
-            "Historian migration and time-series platform selection",
-            "Community development technology implementation",
-            "Federal grants management systems and compliance",
-            "Operational technology security review",
-        ],
-        subServices: [
-            {
-                label: "SCADA Systems",
-                anchor: "scada",
-                description: "Design, migration, and modernization.",
-            },
-            {
-                label: "Community Development Tech",
-                anchor: "community",
-                description: "Public-sector systems that serve real people.",
-            },
-            {
-                label: "Federal Grants Management",
-                anchor: "grants",
-                description: "Compliance-aware grants systems.",
-            },
-        ],
-        deliverables: [
-            "System design or migration plan",
-            "Historian/platform recommendation",
-            "Compliance review",
-            "Cutover runbook",
-        ],
-        faq: [
-            {
-                q: "Can you work with our existing OT environment?",
-                a: "Yes — most of our work is inside existing environments, not greenfield.",
-            },
-            {
-                q: "Do you do grants compliance work?",
-                a: "Yes, including systems that must satisfy federal audit requirements.",
-            },
-        ],
-        engagement:
-            "Discovery is two weeks. Migration and delivery are scoped per system and per cutover window.",
-    },
-    {
         slug: "delivery",
-        title: "Delivery, Staffing & White Papers",
-        shortTitle: "Delivery & Staffing",
+        title: "Staffing & Delivery",
+        shortTitle: "Staffing & Delivery",
         icon: "users",
         blurb:
             "Project management, onsite and remote staffing, and technical white papers.",
@@ -610,7 +506,7 @@ export function getServiceBySlug(slug: string): Service | undefined {
 export const HERO = {
     eyebrow: "Dallas-Fort Worth · Software engineering & technology solutions",
     headlineTop: "From complex systems",
-    headlineAccent: "to technical solutions.",
+    headlineAccent: "to seamless solutions.",
     lead:
         "Dodona LLC embeds engineers and architects into your organization to modernize critical systems, ship AI-ready data platforms, and turn stalled roadmaps into production software — without the ramp-up cost of hiring.",
     trust: [
@@ -682,7 +578,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     {
         slug: "ar-work-instructions",
         industry: "Manufacturing",
-        year: "2024",
+        year: "2026",
         title: "AR work instructions cut assembly rework by 38%",
         summary:
             "A DFW manufacturer replaced paper work instructions with a heads-up AR overlay on existing hardware — piloted in six weeks.",
@@ -694,17 +590,17 @@ export const CASE_STUDIES: CaseStudy[] = [
         ],
     },
     {
-        slug: "scada-historian-migration",
-        industry: "Energy",
-        year: "2024",
-        title: "Legacy SCADA historian migration with zero downtime",
+        slug: "business-process-automation",
+        industry: "Cross-Industry",
+        year: "2026",
+        title: "End-to-end workflow automation and system integration",
         summary:
-            "Migrated 11 years of operational telemetry off an end-of-life historian onto a modern time-series platform — cutover in a single maintenance window.",
-        icon: "database",
+            "Replaced repetitive manual processes with integrated automation workflows, connecting business applications, streamlining data movement, and reducing operational overhead.",
+        icon: "workflow",
         mediaVariant: "gold",
         metrics: [
-            { value: "0 min", label: "Unplanned downtime" },
-            { value: "11 yrs", label: "Data preserved" },
+            { value: "24/7", label: "Automated workflows" },
+            { value: "Fewer", label: "Manual processes" },
         ],
     },
     {
@@ -791,18 +687,18 @@ export const INSIGHTS: Insight[] = [
     {
         slug: "ar-work-instructions",
         industry: "Manufacturing",
-        year: "2024",
+        year: "2026",
         title: "AR work instructions cut assembly rework by 38%",
         excerpt:
             "A DFW manufacturer replaced paper work instructions with a heads-up AR overlay on existing hardware — piloted in six weeks.",
     },
     {
-        slug: "scada-historian-migration",
-        industry: "Energy",
-        year: "2024",
-        title: "Legacy SCADA historian migration with zero downtime",
+        slug: "business-process-automation",
+        industry: "Cross-Industry",
+        year: "2026",
+        title: "End-to-end workflow automation and system integration",
         excerpt:
-            "Migrated 11 years of operational telemetry off an end-of-life historian onto a modern time-series platform — cutover in a single maintenance window.",
+            "Replaced repetitive manual processes with integrated automation workflows, connecting business applications, streamlining data movement, and reducing operational overhead.",
     },
     {
         slug: "ai-governance-framework",
@@ -867,9 +763,7 @@ export const CONTACT_FORM = {
         "Data, GIS & CRM",
         "Technology Strategy & Planning",
         "Business Continuity",
-        "Telecom Audits & Call Center Design",
-        "Community Development & Grants",
-        "Delivery, Staffing & White Papers",
+        "Staffing & Delivery",
         "Something else",
     ],
     budgetOptions: [
@@ -895,7 +789,7 @@ export const ABOUT = {
     checklist: [
         "Fixed-scope sprints with explicit change control",
         "Two-week discovery that produces artifacts you own",
-        "Domain depth in energy, manufacturing, healthcare, telecom, and public sector",
+        "Domain depth in energy, manufacturing, healthcare, and public sector",
         "Onsite in DFW when the work demands a whiteboard",
         "Documentation and enablement built into every engagement",
     ],
@@ -916,9 +810,9 @@ export const INSIGHT_BODIES: Record<string, string[]> = {
         "The strangler pattern works because it changes the politics. Each increment ships value, each rollback path is real, and the migration is conducted one feature at a time behind a facade.",
         "The critical success factor is building the facade first — a thin routing layer that lets old and new systems run side by side without the rest of the organization noticing which is which. Get that layer right and the rest is discipline.",
     ],
-    "telecom-billing-audits": [
-        "Most telecom overcharges are not billing errors. They are contract drift: circuits that were provisioned years ago and never deprovisioned, terms that expired and quietly renewed at higher rates, usage that was never metered.",
-        "A practical review starts with a full circuit inventory — every circuit, every contract, every billing line — reconciled against what is actually in use today.",
-        "The recoverable spend is usually significant, but the more important output is the process change that prevents the drift from recurring: automated inventory reconciliation, contract term tracking, and periodic reviews tied to actual usage rather than the invoice.",
+    "vr-ar-development": [
+        "The biggest challenge in VR and AR development is rarely the visual experience itself. It is making immersive applications work reliably across hardware, software, and real-world environments. Performance constraints, device compatibility, spatial tracking, and interaction design all influence whether an experience feels seamless or frustrating.",
+        "A successful implementation starts with understanding the environment and intended use case. Whether building immersive training simulations, interactive product visualizations, or augmented reality applications, the right approach considers hardware capabilities, rendering performance, user interaction, and integration with existing systems.",
+        "The real value of immersive technology comes when it solves a practical problem: helping teams visualize complex information, train in realistic environments, interact with digital models, or experience products in new ways. The goal isn't simply to build something immersive — it's to build something useful, intuitive, and reliable."
     ],
 };
