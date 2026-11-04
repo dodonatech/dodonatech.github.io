@@ -508,7 +508,7 @@ export const HERO = {
     headlineTop: "From complex systems",
     headlineAccent: "to seamless solutions.",
     lead:
-        "Dodona LLC embeds engineers and architects into your organization to modernize critical systems, ship AI-ready data platforms, and turn stalled roadmaps into production software — without the ramp-up cost of hiring.",
+        "We connect into your organization's structure and data to modernize critical systems, while delivering AI-ready data platforms. Let us jumpstart stalled roadmaps into production software. You focus on what makes your business great — without the ramp-up cost of hiring.",
     trust: [
         { value: "2 weeks", label: "Fixed-scope discovery" },
         { value: "DFW", label: "Onsite or remote" },
