@@ -1,7 +1,7 @@
 export const COMPANY = {
     name: "Dodona LLC",
     shortName: "Dodona",
-    tagline: "Senior engineering talent for ambitious software teams.",
+    tagline: "From complex systems to technical solutions.",
     contactEmail: "dodonatech@proton.me",
     location: "Dallas, TX",
     region: "DFW metroplex",
@@ -573,7 +573,7 @@ export const SERVICES: Service[] = [
             {
                 label: "Staffing",
                 anchor: "staffing",
-                description: "Onsite and remote senior engineers.",
+                description: "Onsite and remote engineers.",
             },
             {
                 label: "White Papers",
@@ -583,7 +583,7 @@ export const SERVICES: Service[] = [
         ],
         deliverables: [
             "Delivery leadership",
-            "Senior engineers embedded in your team",
+            "Engineers embedded in your team",
             "Technical white papers",
             "Program health assessment (for rescues)",
         ],
@@ -592,10 +592,7 @@ export const SERVICES: Service[] = [
                 q: "Can you staff onsite in DFW?",
                 a: "Yes. Onsite when the work demands it, remote otherwise.",
             },
-            {
-                q: "Are your staffed engineers senior-only?",
-                a: "Yes — 100%. No junior consultants billed at senior rates.",
-            },
+            // TODO: more qa
         ],
         engagement:
             "Staffing is scoped per role and per duration. White papers are fixed-scope, typically two-to-three weeks.",
@@ -611,16 +608,16 @@ export function getServiceBySlug(slug: string): Service | undefined {
 /* ------------------------------------------------------------------ */
 
 export const HERO = {
-    eyebrow: "Dallas-Fort Worth · Senior-only engineering",
-    headlineTop: "Senior engineering talent for",
-    headlineAccent: "ambitious software teams.",
+    eyebrow: "Dallas-Fort Worth · Software engineering & technology solutions",
+    headlineTop: "From complex systems",
+    headlineAccent: "to technical solutions.",
     lead:
-        "Dodona LLC embeds senior engineers and architects into your organization to modernize critical systems, ship AI-ready data platforms, and turn stalled roadmaps into production software — without the ramp-up cost of hiring.",
+        "Dodona LLC embeds engineers and architects into your organization to modernize critical systems, ship AI-ready data platforms, and turn stalled roadmaps into production software — without the ramp-up cost of hiring.",
     trust: [
         { value: "2 weeks", label: "Fixed-scope discovery" },
-        { value: "Senior-only", label: "No junior staffing" },
         { value: "DFW", label: "Onsite or remote" },
-        { value: "20+ yrs", label: "Avg. engineer experience" },
+        { value: "Technical expertise", label: "Modern engineering skills" },
+        { value: "Practical solutions", label: "Technology that works" },
     ],
 } as const;
 
@@ -646,8 +643,8 @@ export const WHY_STATS = [
 export const WHY_FEATURES = [
     {
         num: "01",
-        title: "Senior-only staffing",
-        body: "No bait-and-switch. The architect in the sales call is the architect on your standup. Average 20+ years in production systems.",
+        title: "Adaptable expertise",
+        body: "We bring together the right technical skills for each project, spanning healthcare, modernization, AI platforms, data engineering, automation and VR/AR.",
     },
     {
         num: "02",
@@ -661,8 +658,8 @@ export const WHY_FEATURES = [
     },
     {
         num: "04",
-        title: "Deep domain expertise",
-        body: "Energy, manufacturing, healthcare, public sector, telecom, and financial services — we've run the systems, not just advised on them.",
+        title: "Business-first thinking",
+        body: "We look beyond the code to understand your objectives, identify opportunities, and recommend technology that solves real problems.",
     },
 ] as const;
 
@@ -759,7 +756,7 @@ export const PROCESS_STEPS = [
     {
         num: "STEP 01",
         title: "Discovery call",
-        body: "A 30-minute conversation with a senior engineer — not a salesperson. We tell you honestly whether we're the right fit.",
+        body: "A 30-minute conversation with one of our engineers — not a salesperson. We tell you honestly whether we're the right fit.",
     },
     {
         num: "STEP 02",
@@ -825,7 +822,7 @@ export const CAREERS = {
     eyebrow: "Careers",
     headline: "No open roles right now — but always open to great people.",
     lead:
-        "We hire slowly and staff deliberately. If you're a senior engineer who wants to own outcomes rather than tickets, we'd like to know you even when we're not actively hiring. Send an introduction and we'll keep it on file — and reach out first when a role opens.",
+        "We hire slowly and staff deliberately. If you're an engineer who wants to own outcomes rather than tickets, we'd like to know you even when we're not actively hiring. Send an introduction and we'll keep it on file — and reach out first when a role opens.",
     statusBadges: [
         { label: "No open roles right now", tone: "muted" as const },
         { label: "Always accepting introductions", tone: "cyan" as const },
@@ -893,10 +890,9 @@ export const ABOUT = {
     headline: "Named for the oracle. Built by engineers.",
     paragraphs: [
         "In ancient Greece, people traveled to Dodona to ask the oracle what to do next. We liked the metaphor: hard questions, clear answers, no theater.",
-        "Dodona LLC is a Dallas-based software consulting firm founded on a simple constraint — only senior engineers, and only work we'd put our names on. We serve the DFW metroplex and work remotely with teams across the country.",
+        "Our approach combines hands-on engineering expertise with a commitment to quality, efficiency, and long-term reliability—helping businesses modernize their systems, streamline operations, and bring ideas to life.",
     ],
     checklist: [
-        "Senior-only — no junior consultants billed at senior rates",
         "Fixed-scope sprints with explicit change control",
         "Two-week discovery that produces artifacts you own",
         "Domain depth in energy, manufacturing, healthcare, telecom, and public sector",
